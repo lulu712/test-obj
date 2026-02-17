@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1>threads</h1>
+
+  <h1>我要娶買東西</h1>
     <button @click="goAbout">去 About 頁面</button>
   </div>
 </template>
@@ -10,7 +12,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const goAbout = () => {
-  router.push({ name: 'About' })
+  router.push({ name: 'PostList' })
 }
 </script>
 
