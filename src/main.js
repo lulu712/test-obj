@@ -9,6 +9,7 @@ import router from './router'
 const app = createApp(App)
 app.use(ElementPlus)
 
+
 //一定要先掛載router，才能在組件中使用router.push()等方法
 app.use(router)
 app.mount('#app')

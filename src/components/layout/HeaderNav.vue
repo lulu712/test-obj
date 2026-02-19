@@ -1,46 +1,30 @@
 <template>
-
-  
-
-  <HeaderNav/>
-
+    <header class="header">
+    <div class="tabs" aria-label="Feed tabs">
+      <router-link to="/" class="tab" exact-active-class="active">為你推薦</router-link>
+      <router-link to="/following" class="tab" active-class="active">追蹤中</router-link>
+      <router-link to="/ghostposts" class="tab" active-class="active">限時貼文</router-link>
+    </div>
+  </header>
 </template>
 
 <script setup>
-import HeaderNav from '../../components/Layout/headerNav.vue';
-
-
-
-
 
 </script>
 
 
-
-
 <style lang="less" scoped>
-.home {
-  padding: 10px;
-}
-.tab {
-  padding: 12px 24px;
-  color: #888;
-}
-
-.router-link-exact-active {
-  color: #000;
-  border-bottom: 2px solid #000;
-}
-
 .header{
   height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: sticky;      /* 你要固定在上方可以用 */
+  position: sticky;      
   top: 0;
-  background: #fafafa; 
+  background: #fafafa;   
+  z-index: 10;
   border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding-right: 72px; /* Offset SideNav width (72px) to center relative to screen */
 }
 
 /* tabs 置中 */
@@ -73,6 +57,7 @@ import HeaderNav from '../../components/Layout/headerNav.vue';
   background: #000;
   border-radius: 999px;
 }
+
 
 
 </style>

@@ -3,9 +3,11 @@ import MainLayout from '../MainLayout.vue'
 import Home from '../views/home/Home.vue'
 import Login from '../views/auth/Login.vue'
 import Register from '../views/auth/Register.vue'
-import Profile from '../views/profile/Profile.vue'
-
-
+import Activity from '../views/Activity/Activity.vue'
+import Search from '../views/Search/Search.vue'
+import Profile from '../views/Profile/Profile.vue'
+import GhostPosts from '../views/GhostPosts/GhostPosts.vue'
+import Following from '../views/Following/Following.vue'
 
 const routes = [
     //不套用layout 登入註冊
@@ -18,7 +20,12 @@ const routes = [
         component: MainLayout,
         children:[
             {path: '' ,name: 'Home',component:Home},
-            {path: 'profile',name:'Profile',component:Profile}
+            {path: 'profile',name:'Profile',component:Profile},
+            {path: 'activity',name:'Activity',component:Activity},
+            {path: 'search',name:'Search',component:Search},
+            {path: 'ghostposts',name:'GhostPosts',component:GhostPosts},
+            {path: 'following',name:'Following',component:Following}
+             
         ]
     },
 
