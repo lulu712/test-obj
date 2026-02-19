@@ -1,5 +1,5 @@
 <template>
- <h1>我是List</h1>
+ <h1>我是搜尋</h1>
 </template>
 
 <script>

@@ -2,143 +2,151 @@
   <nav class="threads-nav">
     <!-- Logo -->
     <router-link to="/" class="logo" aria-label="Threads">
-      <span class="logo-mark">◎</span>
+      <img 
+        :src="logo" 
+        class="logo-mark"
+        alt="threads首頁"
+        width="40px"
+        height="40px"
+        />
+
     </router-link>
 
     <!-- Middle icons -->
     <div class="nav-list">
-      <router-link to="/" class="nav-btn" :class="{ active: isActive('/') }" aria-label="Home">
-        <span class="ic">⌂</span>
+      <router-link to="/" class="nav-btn" aria-label="Home">
+        <HomeIcon class="icon" />
       </router-link>
 
-      <router-link to="/search" class="nav-btn" :class="{ active: isActive('/search') }" aria-label="Search">
-        <span class="ic">⌕</span>
+      <!-- 搜索 -->
+      <router-link to="/search" class="nav-btn"  aria-label="Search">
+        <MagnifyingGlassIcon class="icon" />
       </router-link>
 
-      <!-- Create -->
+      <!-- 添加 -->
       <button class="nav-btn create" type="button" aria-label="Create">
-        <span class="plus">＋</span>
+        <PlusIcon class="icon" />
       </button>
 
-      <router-link to="/activity" class="nav-btn" :class="{ active: isActive('/activity') }" aria-label="Activity">
-        <span class="ic">♡</span>
+      <router-link to="/activity" class="nav-btn" aria-label="Activity">
+        <HeartIcon class="icon" />
       </router-link>
 
-      <router-link to="/profile" class="nav-btn" :class="{ active: isActive('/profile') }" aria-label="Profile">
-        <span class="ic">👤</span>
+      <router-link to="/profile" class="nav-btn" aria-label="Profile">
+         <UserIcon class="icon" />
       </router-link>
     </div>
 
     <!-- Bottom menu -->
-    <button class="nav-btn menu" type="button" aria-label="Menu">
-      <span class="hamburger">
-        <span></span><span></span>
-      </span>
-    </button>
+      <el-dropdown placement="top-end">
+      <button class="nav-btn menu"  native-type="button" aria-label="Menu">
+       <Bars2Icon class="icon"/>
+      </button>
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item>外觀</el-dropdown-item>
+          <el-dropdown-item>設定</el-dropdown-item>
+          <el-dropdown-item>動態設定</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown>
+
   </nav>
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
+import { HomeIcon,MagnifyingGlassIcon,PlusIcon, HeartIcon, UserIcon,Bars2Icon } from '@heroicons/vue/24/outline'
+import { HomeIcon as HomeSolid, HeartIcon as HeartSolid, UserIcon as UserSolid } from '@heroicons/vue/24/solid'
+import logo from '@/assets/image/Threads.png'
 
-const route = useRoute()
 
-// 讓 active 判斷更像 App：完全相等才算 active
-const isActive = (path) => route.path === path
+
+
 </script>
 
-<style scoped>
-/* 整個左欄 */
+<style lang="less" scoped>
 .threads-nav{
+  height: 100vh;
   width: 72px;
-  min-height: 100vh;
-  background: #fff;
-  display: flex;
+  flex-shrink: 0;
+  display:flex;
   flex-direction: column;
   align-items: center;
-  padding: 18px 0;
-  box-sizing: border-box;
+  padding: 16px 0;
+  background: #fafafa;
 }
 
 /* Logo */
 .logo{
   width: 44px;
   height: 44px;
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-  margin-bottom: 18px;
+  display:grid;
+  place-items:center;
+  margin-bottom: 20px;
 }
+
 .logo-mark{
-  font-size: 30px;
-  color: #000;
-  line-height: 1;
+  display:block;
 }
 
-/* 中間列表 */
+/* 中間 icon 區 */
 .nav-list{
-  display: flex;
+  flex: 1;
+  display:flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 22px;         /* 每個 icon 間距（像你圖那樣大） */
-  margin-top: 6px;
+  gap: 12px;        /* ⭐ 原本 18px → 改成 12px */
 }
 
-/* 通用按鈕 */
+/* 一般按鈕 */
 .nav-btn{
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 14px;
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-  color: #bdbdbd;    /* 未選中灰 */
+  display:grid;
+  place-items:center;
   background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
+  text-decoration:none;
 }
 
-/* icon（用文字先頂著，之後換 SVG） */
-.ic{
-  font-size: 26px;
-  line-height: 1;
-  transform: translateY(-1px);
+.nav-btn:hover{
+  background:#f2f2f2;
 }
 
-/* 選中：變黑 */
-.nav-btn.active{
-  color: #000;
+/* icon 尺寸 */
+.icon{
+  width: 26px;
+  height: 26px;
+  color:#b5b5b5;
+  transition: color 0.15s ease;
 }
 
-/* Create：淡灰圓角方塊 */
-.nav-btn.create{
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
-  background: #f1f1f1;
-  color: #9e9e9e;
+/* + 按鈕（官方略大） */
+.create{
+  width: 48px;       /* 52 → 48 */
+  height: 48px;
+  border-radius: 15px;
+  background:#f1f1f1;
 }
-.plus{
-  font-size: 30px;
-  line-height: 1;
+
+.create:hover{
+  background:#e9e9e9;
+}
+
+.create .icon{
+  width: 26px;
+  height: 26px;
+  color:#9e9e9e;
+  transform: translateY(1px); /* 視覺中心微調 */
 }
 
 /* 底部 menu */
-.nav-btn.menu{
-  margin-top: auto;
-  color: #9e9e9e;
+.menu{
+  margin-top:16px;
 }
-.hamburger{
-  width: 20px;
-  height: 16px;
-  display: grid;
-  gap: 6px;
-}
-.hamburger span{
-  display: block;
-  height: 3px;
-  border-radius: 999px;
-  background: #9e9e9e;
-}
+
 </style>
