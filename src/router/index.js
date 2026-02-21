@@ -19,12 +19,12 @@ const routes = [
         path: '/',
         component: MainLayout,
         children:[
-            {path: '' ,name: 'Home',component:Home},
-            {path: 'profile',name:'Profile',component:Profile},
-            {path: 'activity',name:'Activity',component:Activity},
-            {path: 'search',name:'Search',component:Search},
-            {path: 'ghostposts',name:'GhostPosts',component:GhostPosts},
-            {path: 'following',name:'Following',component:Following}
+            {path: '' ,name: 'Home',component:Home,meta:{header : 'tabs'}},
+            {path: 'profile',name:'Profile',component:Profile,meta:{header : 'title',title: '個人檔案'}},
+            {path: 'activity',name:'Activity',component:Activity,meta:{header : 'title',title:'動態'}},
+            {path: 'search',name:'Search',component:Search,meta:{header: 'title', title: '搜尋' }},
+            {path: 'ghostposts',name:'GhostPosts',component:GhostPosts,meta:{header: 'tabs', title: '貼文' }},
+            {path: 'following',name:'Following',component:Following,meta:{header: 'tabs', title: '追蹤中' }}
              
         ]
     },
