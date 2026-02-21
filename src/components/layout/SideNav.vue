@@ -56,7 +56,6 @@
 
 <script setup>
 import { HomeIcon,MagnifyingGlassIcon,PlusIcon, HeartIcon, UserIcon,Bars2Icon } from '@heroicons/vue/24/outline'
-import { HomeIcon as HomeSolid, HeartIcon as HeartSolid, UserIcon as UserSolid } from '@heroicons/vue/24/solid'
 import logo from '@/assets/image/Threads.png'
 
 
@@ -66,14 +65,14 @@ import logo from '@/assets/image/Threads.png'
 
 <style lang="less" scoped>
 .threads-nav{
-  height: 100vh;
+  height: 100%;
   width: 72px;
   flex-shrink: 0;
   display:flex;
   flex-direction: column;
   align-items: center;
   padding: 16px 0;
-  background: #fafafa;
+  background: #F2F3F5;
 }
 
 /* Logo */
@@ -96,13 +95,13 @@ import logo from '@/assets/image/Threads.png'
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 12px;        /* ⭐ 原本 18px → 改成 12px */
+  gap: 0px;     
 }
 
 /* 一般按鈕 */
 .nav-btn{
-  width: 42px;
-  height: 42px;
+  width: 60px;
+  height: 50px;
   border-radius: 14px;
   display:grid;
   place-items:center;
@@ -127,8 +126,8 @@ import logo from '@/assets/image/Threads.png'
 
 /* + 按鈕（官方略大） */
 .create{
-  width: 48px;       /* 52 → 48 */
-  height: 48px;
+  width: 60px;      
+  height: 50px;
   border-radius: 15px;
   background:#f1f1f1;
 }
@@ -146,7 +145,8 @@ import logo from '@/assets/image/Threads.png'
 
 /* 底部 menu */
 .menu{
-  margin-top:16px;
+  margin-top:20px;
+  margin-bottom: 22px;
 }
 
 </style>
