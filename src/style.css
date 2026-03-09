@@ -1,17 +1,20 @@
 html, body {
   height: 100%;
   margin: 0;
-  background:#F2F3F5;
-  
+  background: #F2F3F5;
 }
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* ✅ 強制 light，避免跟著系統暗黑 */
+  color-scheme: light;
+
+  /* ✅ 明確指定文字顏色（黑字） */
+  color: #111;
+  background-color: #F2F3F5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,29 +27,26 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
-}
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+
+  /* ✅ 再保險一次：body 也指定顏色 */
+  color: #111;
+  background: #F2F3F5;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+/* ✅ 按鈕別用深色底，否則搭配淺底會很突兀 */
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid #ddd;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #fff;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -56,23 +56,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.card {
-  padding: 2em;
-}
-
 #app {
   width: 100%;
 }
 
+/* ✅ 這段可以整個刪掉，因為你不打算支援暗黑 */
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  /* 留空或刪除 */
 }

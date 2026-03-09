@@ -10,7 +10,19 @@
       </div>
 
       <!-- 右側功能按鈕（可選） -->
-      <button class="more">⋯</button>
+       <el-dropdown>
+         <button class="more">
+          <EllipsisHorizontalCircleIcon class="icon" />
+         </button>
+               <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item>外觀</el-dropdown-item>
+          <el-dropdown-item>設定</el-dropdown-item>
+          <el-dropdown-item>動態設定</el-dropdown-item>
+        </el-dropdown-menu>
+      </template>
+       </el-dropdown>
+     
     </div>
   </header>
 </template>
@@ -18,6 +30,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { EllipsisHorizontalCircleIcon } from '@heroicons/vue/24/outline'
 
 const route = useRoute()
 
@@ -58,11 +71,19 @@ const title = computed(() => route.meta.title || '')
 }
 
 .more{
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   border: none;
   background: transparent;
   font-size: 20px;
   cursor: pointer;
 }
+
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: #2c2828;
+}
+
 </style>

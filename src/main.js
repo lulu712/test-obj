@@ -4,12 +4,13 @@ import App from './App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import router from './router'
+import { createPinia } from 'pinia'
 
 
 const app = createApp(App)
 app.use(ElementPlus)
 
-
+app.use(createPinia())
 //一定要先掛載router，才能在組件中使用router.push()等方法
 app.use(router)
 app.mount('#app')

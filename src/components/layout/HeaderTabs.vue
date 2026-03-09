@@ -2,7 +2,7 @@
   <header class="threads-header">
     <div class="header-inner">
       <div class="tabs" aria-label="Feed tabs">
-        <router-link to="/" class="tab" exact-active-class="active">動態</router-link>
+        <router-link to="/" class="tab" exact-active-class="active">為您推薦</router-link>
         <router-link to="/following" class="tab" exact-active-class="active">追蹤中</router-link>
         <router-link to="/ghostposts" class="tab" exact-active-class="active">限時貼文</router-link>
       </div>
@@ -12,9 +12,6 @@
 
 
 <script setup>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-const route = useRoute()
 
 
 
@@ -32,7 +29,7 @@ const route = useRoute()
 /* 這層才是 620px */
 .header-inner{
   width: 100%;
-  max-width: 580px;
+  max-width:  620px;
   margin: 0 auto;
   height: 64px;
   display:flex;
@@ -53,7 +50,7 @@ const route = useRoute()
   color: #9b9b9b;
   font-size: 15px;
   font-weight: 600;
-  padding: 18px 6px;
+  padding: 20px 6px;
   position: relative;
 }
 
@@ -66,7 +63,7 @@ const route = useRoute()
   left: 0;
   right: 0;
   bottom: -1px;
-  height: 2px;
+  height: 0.5px;
   background: #000;
   border-radius: 999px;
 }

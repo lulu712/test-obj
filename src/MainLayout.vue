@@ -53,7 +53,7 @@ const HeaderComp = computed(() => {
 
 .feed-inner{
   width: 100%;          /* ✅ 很重要 */
-  max-width: 620px;     /* 中間寬 */
+  max-width: 680px;     /* 中間寬 */
   margin: 0 auto;       /* ✅ 置中關鍵 */
   padding: 0 16px 24px; /* 上面 0 才能貼齊 header 線 */
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="timeline">
-    <!-- 發文框（父頁保留） -->
-    <div class="composer">
+    <!-- 發文框：只在 following 顯示 -->
+    <div v-if="tab === 'following'" class="composer">
       <div class="avatar"></div>
 
       <input
@@ -10,15 +10,11 @@
         placeholder="有什麼新鮮事？"
         @keydown.enter.exact="submit"
       />
-
-      <button class="btn" :disabled="!canPost" @click="submit">
-        發佈
-      </button>
+      <button class="btn" :disabled="!canPost" @click="submit">發佈</button>
     </div>
 
-    <!-- ✅ 用子元件渲染每一篇 -->
     <PostItem
-      v-for="p in posts"
+      v-for="p in visiblePosts"
       :key="p.id"
       :post="p"
       :is-reply-open="openReplyId === p.id"
@@ -26,58 +22,54 @@
       @toggle-reply="toggleReplyBox"
       @add-reply="handleAddReply"
       @delete="handleDelete"
-      @repost="repost"
-      @share="share"
     />
 
-    <div v-if="posts.length === 0" class="empty">
-      還沒有貼文，先發一篇試試 🙂
+    <div v-if="visiblePosts.length === 0" class="empty">
+      目前沒有貼文 🙂
     </div>
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue'
+import { usePostsStore } from '@/store/posts' // 你若是 stores 自己改
 import PostItem from '@/components/Post/PostItem.vue'
-import { usePostsStore } from '@/store/posts' 
+
+const props = defineProps({
+  tab: { type: String, required: true }, // 'following' | 'forYou'
+})
 
 const store = usePostsStore()
 
-/** 父頁：只管列表 + 發文 */
+/** 只顯示該頁 tab 的貼文 */
+const visiblePosts = computed(() => store.posts.filter(p => p.tab === props.tab))
+
+/** 發文（只給 following 用） */
 const draft = ref('')
-const posts = computed(() => store.posts)
 const canPost = computed(() => draft.value.trim().length > 0)
 
 function submit() {
+  if (props.tab !== 'following') return
   if (!canPost.value) return
-  store.addPost(draft.value)
+  store.addPost(draft.value) // store 內部會把 tab 設為 following
   draft.value = ''
 }
 
-/** 父頁：只管「哪篇回覆框開著」 */
+/** 回覆框展開控制 */
 const openReplyId = ref(null)
-
 function toggleReplyBox(postId) {
-  openReplyId.value = (openReplyId.value === postId) ? null : postId
+  openReplyId.value = openReplyId.value === postId ? null : postId
 }
 
-/** 子元件回覆送出：集中交給 store */
-function handleAddReply(payload) {
-  // payload: { postId, text }
-  store.addReply(payload.postId, payload.text)
+function handleAddReply({ postId, text }) {
+  store.addReply(postId, text)
 }
 
-/** 子元件刪除：集中交給 store + 可能要收起回覆框 */
 function handleDelete(postId) {
   store.deletePost(postId)
   if (openReplyId.value === postId) openReplyId.value = null
 }
-
-/** 先保留 */
-function repost(postId) { console.log('repost', postId) }
-function share(postId) { console.log('share', postId) }
 </script>
-
 
 <style scoped lang="less">
 /* 白色大框 */
