@@ -1,8 +1,8 @@
 <template>
   <div class="timeline">
     <!-- 發文框：只在 following 顯示 -->
-    <div v-if="tab === 'following'" class="composer">
-      <div class="avatar"></div>
+    <div class="composer">
+     <img class="avatar" :src="avatar1" alt="avatar" />
 
       <input
         v-model="draft"
@@ -34,6 +34,8 @@
 import { computed, ref } from 'vue'
 import { usePostsStore } from '@/store/posts' // 你若是 stores 自己改
 import PostItem from '@/components/Post/PostItem.vue'
+import avatar1 from '@/assets/image/avatar1.jpg'
+
 
 const props = defineProps({
   tab: { type: String, required: true }, // 'following' | 'forYou'
@@ -117,7 +119,9 @@ function handleDelete(postId) {
   padding:16px;
   border-bottom:1px solid rgba(0,0,0,0.08);
 }
-.post:last-child{ border-bottom:none; }
+.post:last-child{ 
+    border-bottom:none; 
+}
 
 .avatar{
   width:44px;
@@ -134,8 +138,14 @@ function handleDelete(postId) {
   align-items:center;
   gap:8px;
 }
-.name{ font-weight:800; font-size:18px; }
-.time{ color:#8a8a8a; font-size:14px; }
+.name{ 
+    font-weight:800; 
+    font-size:18px; 
+}
+.time{ 
+    color:#8a8a8a; 
+    font-size:14px; 
+}
 
 .more{
   margin-left:auto;

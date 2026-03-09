@@ -1,6 +1,6 @@
 <template>
   <article class="post">
-    <div class="avatar"></div>
+    <img class="avatar" :src="post.avatar || avatar1" alt="avatar" />
 
     <div class="body">
       <div class="meta">
@@ -36,6 +36,7 @@
 
       <!-- 回覆輸入框：由父層控制開關 -->
       <div v-if="isReplyOpen" class="reply-box">
+        <img class="avatar reply-avatar" :src="avatar" alt="avatar" />
         <input
           v-model="replyLocal"
           class="reply-input"
@@ -64,6 +65,7 @@ import { computed, ref, watch } from 'vue'
 import { ArrowPathIcon } from '@heroicons/vue/24/solid'
 import { PaperAirplaneIcon,ChatBubbleOvalLeftIcon} from '@heroicons/vue/24/outline'
 
+import avatar from '@/assets/image/avatar1.jpg'
 const props = defineProps({
   post: { type: Object, required: true },
   isReplyOpen: { type: Boolean, default: false },
@@ -182,6 +184,11 @@ function formatTime(ts) {
     display: flex;
     gap: 10px; 
     margin-top: 10px; 
+    align-items: center;
+}
+.reply-avatar {
+    width: 32px;
+    height: 32px;
 }
 .reply-input {
     flex: 1; 

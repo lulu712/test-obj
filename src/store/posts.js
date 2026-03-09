@@ -1,4 +1,7 @@
 import { defineStore } from 'pinia'
+import avatar2 from '@/assets/image/avatar2.jpg'
+import avatar1 from '@/assets/image/avatar1.jpg' 
+import avatar3 from '@/assets/image/avatar3.jpg' 
 
 const STORAGE_KEY = 'threads_posts_v2'
 
@@ -15,6 +18,7 @@ export const usePostsStore = defineStore('posts', {
       this.posts.unshift({
         id: newId(),
         author: '你自己',
+        avatar:avatar1,
         createdAt: Date.now(),
         text: content,
         tab: 'following', // ✅ 你發文預設屬於追蹤中
@@ -52,6 +56,7 @@ export const usePostsStore = defineStore('posts', {
       post.replies.unshift({
         id: newId(),
         author: '你自己',
+        avatar: avatar1,
         createdAt: Date.now(),
         text: content,
       })
@@ -77,7 +82,7 @@ function loadPosts() {
 function savePosts(posts) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(posts))
-  } catch {}
+  } catch { }
 }
 
 function newId() {
@@ -96,6 +101,7 @@ function getDefaultPosts() {
       likes: 2,
       likedByMe: false,
       replies: [],
+      avatar: avatar2,
     },
     {
       id: 'demo-foryou-1',
@@ -106,6 +112,7 @@ function getDefaultPosts() {
       likes: 10,
       likedByMe: false,
       replies: [],
+      avatar:avatar3,
     },
   ]
 }

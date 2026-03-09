@@ -1,5 +1,5 @@
 <template>
-  <div class="ghost-container">
+  <div class="timeline">
     <div class="empty">
       <FaceSmileIcon class="empty-icon"/>
 
@@ -20,46 +20,45 @@ import { FaceSmileIcon } from '@heroicons/vue/24/outline'
 </script>
 
 
-
-
 <style lang="less" scoped>
- .ghost-container{
-  background: white;
-  border-radius: 24px;
-  padding: 0px 20px;
-  margin: 0px auto;
-
-  max-width: 520px;
-  min-height: 360px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
+/* 同 Home.vue 的白色總容器 */
+.timeline {
+  width: 100%;
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06);
+  overflow: hidden;
+  /* 根據 GhostPosts 特性可增加基本高度或置中 */
+  min-height: 480px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.empty{
-  text-align:center;
-  color:#8e8e8e;
+.empty {
+  text-align: center;
+  color: #8e8e8e;
+  padding: 40px 20px;
 }
 
-.empty-icon{
-  width:56px;
-  height:56px;
-  margin-bottom:20px;
-  color:#9e9e9e;
+.empty-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  color: #9e9e9e;
 }
 
-.empty-title{
-  font-size:20px;
-  font-weight:600;
-  margin-bottom:12px;
+.empty-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
-.empty-desc{
-  font-size:14px;
-  line-height:1.6;
-  max-width:420px;
-  margin:auto;
-  color:#a1a1a1;
+.empty-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 420px;
+  margin: auto;
+  color: #a1a1a1;
 }
 </style>

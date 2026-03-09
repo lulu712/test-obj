@@ -1,18 +1,23 @@
+/* 基本 reset */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   margin: 0;
   background: #F2F3F5;
 }
 
+/* 全域字體與顏色 */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  /* ✅ 強制 light，避免跟著系統暗黑 */
+  /* 強制 light mode */
   color-scheme: light;
 
-  /* ✅ 明確指定文字顏色（黑字） */
   color: #111;
   background-color: #F2F3F5;
 
@@ -22,23 +27,21 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
 body {
-  margin: 0;
   min-width: 320px;
   min-height: 100vh;
-
-  /* ✅ 再保險一次：body 也指定顏色 */
   color: #111;
   background: #F2F3F5;
 }
 
-/* ✅ 按鈕別用深色底，否則搭配淺底會很突兀 */
+/* 連結 */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: none;
+}
+
+/* 按鈕基礎樣式 */
 button {
   border-radius: 8px;
   border: 1px solid #ddd;
@@ -51,16 +54,34 @@ button {
   transition: border-color 0.25s;
 }
 
+/* hover */
+button:hover {
+  border-color: #bbb;
+}
+
+.icon-btn {
+  padding:6px;
+  border-radius:8px;
+}
+
+.icon-btn:hover {
+  background:#f3f3f3;
+}
+
+/* 移除瀏覽器 focus 藍框 */
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+  box-shadow: none;
 }
 
+/* 圖片不超出容器 */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Vue root */
 #app {
   width: 100%;
-}
-
-/* ✅ 這段可以整個刪掉，因為你不打算支援暗黑 */
-@media (prefers-color-scheme: light) {
-  /* 留空或刪除 */
 }

@@ -2,7 +2,7 @@
   <div class="timeline">
     <!-- 發文框（父頁保留） -->
     <div class="composer">
-      <div class="avatar"></div>
+      <img class="avatar" :src="avatar" alt="avatar" />
 
       <input
         v-model="draft"
@@ -40,6 +40,7 @@
 import { computed, ref } from 'vue'
 import PostItem from '@/components/Post/PostItem.vue'
 import { usePostsStore } from '@/store/posts' 
+import avatar from '@/assets/image/avatar1.jpg'
 
 const store = usePostsStore()
 
