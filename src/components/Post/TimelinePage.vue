@@ -7,7 +7,7 @@
       <input
         v-model="draft"
         class="input"
-        placeholder="有什麼新鮮事？"
+        placeholder="今天完成了什麼功能？"
         @keydown.enter.exact="submit"
       />
       <button class="btn" :disabled="!canPost" @click="submit">發佈</button>
@@ -38,7 +38,7 @@ import avatar1 from '@/assets/image/avatar1.jpg'
 
 
 const props = defineProps({
-  tab: { type: String, required: true }, // 'following' | 'forYou'
+  tab: { type: String, required: true }, 
 })
 
 const store = usePostsStore()
@@ -51,9 +51,8 @@ const draft = ref('')
 const canPost = computed(() => draft.value.trim().length > 0)
 
 function submit() {
-  if (props.tab !== 'following') return
   if (!canPost.value) return
-  store.addPost(draft.value) // store 內部會把 tab 設為 following
+  store.addPost(draft.value, props.tab) 
   draft.value = ''
 }
 

@@ -13,8 +13,14 @@
     </router-link>
 
     <!-- Middle icons -->
+
     <div class="nav-list">
-      <router-link to="/" class="nav-btn" aria-label="Home">
+
+      <router-link to="/" class="nav-btn" aria-label="Profile">
+         <UserIcon class="icon" />
+      </router-link>
+
+      <router-link to="/home" class="nav-btn" aria-label="Home">
         <HomeIcon class="icon" />
       </router-link>
 
@@ -32,9 +38,6 @@
         <HeartIcon class="icon" />
       </router-link>
 
-      <router-link to="/profile" class="nav-btn" aria-label="Profile">
-         <UserIcon class="icon" />
-      </router-link>
     </div>
 
     <!-- Bottom menu -->

@@ -1,5 +1,5 @@
 <template>
-  <TimelinePage tab="following" />
+  <TimelinePage tab="projects" />
 </template>
 
 <script setup>

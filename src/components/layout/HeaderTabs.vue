@@ -2,9 +2,9 @@
   <header class="threads-header">
     <div class="header-inner">
       <div class="tabs" aria-label="Feed tabs">
-        <router-link to="/" class="tab" exact-active-class="active">為您推薦</router-link>
-        <router-link to="/following" class="tab" exact-active-class="active">追蹤中</router-link>
-        <router-link to="/ghostposts" class="tab" exact-active-class="active">限時貼文</router-link>
+        <router-link to="/" class="tab" exact-active-class="active">About</router-link>
+        <router-link to="/projects" class="tab" exact-active-class="active">Projects </router-link>
+        <router-link to="/devLog" class="tab" exact-active-class="active">Dev Log</router-link>
       </div>
     </div>
   </header>

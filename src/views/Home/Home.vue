@@ -7,7 +7,7 @@
       <input
         v-model="draft"
         class="input"
-        placeholder="有什麼新鮮事？"
+        placeholder="今天完成了什麼功能？"
         @keydown.enter.exact="submit"
       />
 
@@ -51,7 +51,7 @@ const canPost = computed(() => draft.value.trim().length > 0)
 
 function submit() {
   if (!canPost.value) return
-  store.addPost(draft.value)
+  store.addPost(draft.value, 'devlog')
   draft.value = ''
 }
 
@@ -126,7 +126,9 @@ function share(postId) { console.log('share', postId) }
   padding:16px;
   border-bottom:1px solid rgba(0,0,0,0.08);
 }
-.post:last-child{ border-bottom:none; }
+.post:last-child{ 
+  border-bottom:none; 
+}
 
 .avatar{
   width:44px;
@@ -143,8 +145,14 @@ function share(postId) { console.log('share', postId) }
   align-items:center;
   gap:8px;
 }
-.name{ font-weight:800; font-size:18px; }
-.time{ color:#8a8a8a; font-size:14px; }
+.name{ 
+  font-weight:800; 
+  font-size:18px; 
+}
+.time{ 
+  color:#8a8a8a; 
+  font-size:14px; 
+}
 
 .more{
   margin-left:auto;

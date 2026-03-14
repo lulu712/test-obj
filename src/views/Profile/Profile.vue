@@ -4,16 +4,38 @@
       <!-- 上半部：個人資訊 -->
       <div class="profile-top">
         <div class="profile-info">
-          <h1 class="name">姸如</h1>
-          <p class="username">lulu_chen0912</p>
+          <h2 class="name">陳姸如 (Chen Yen Ju)</h2>
 
-          <div class="followers">
+          <p class="role">Frontend Developer</p>
+          <p class="bio">
+            專注於 Vue、JavaScript 與前端工程化，喜歡把學習轉化成互動式作品。
+          </p>
+
+          <div class="links-row">
+              <a href="#" class="profile-link">GitHub</a>
+              <span class="dot">・</span>
+              <a href="#" class="profile-link">Email</a>
+              <span class="dot">・</span>
+              <a href="#" class="profile-link">Resume</a>
+           </div>
+
+          <div class="meta-row">
             <div class="follower-avatars">
-              <img :src="avatar1" alt="" />
-              <img :src="avatar2" alt="" />
-              <img :src="avatar3" alt="" />
+              <img :src="image1" alt="" />
+              <img :src="image2" alt="" />
+              <img :src="image3" alt="" />
             </div>
-            <span>85位粉絲</span>
+            <span class="stats">2 個作品 ・ 8 項技能</span>
+          </div>
+          <div class="skills">
+            <span class="skill-tag">Vue</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">Pinia</span>
+            <span class="skill-tag">Vue Router</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Vite</span>
           </div>
         </div>
 
@@ -22,24 +44,32 @@
 
           <div class="profile-icons">
             <button class="icon-btn">
-               <ChartBarSquareIcon class="icon" />
+              <ChartBarSquareIcon class="icon" />
             </button>
             <button class="icon-btn">
-                <CameraIcon class="icon" />
+              <CameraIcon class="icon" />
             </button>
           </div>
         </div>
       </div>
-
-      <!-- 編輯按鈕 -->
-      <button class="edit-btn">編輯個人檔案</button>
-
       <!-- tabs -->
       <div class="profile-tabs">
-        <button class="tab active">串文</button>
-        <button class="tab">回覆</button>
-        <button class="tab">影音內容</button>
-        <button class="tab">轉發</button>
+        <router-link to="/home" class="tab" active-class="active">
+          關於我
+        </router-link>
+
+        <router-link to="/projects" class="tab" active-class="active">
+          專案
+        </router-link>
+
+        <router-link to="/devlog" class="tab" active-class="active">
+          開發紀錄
+        </router-link>
+
+        <router-link to="/devlog" class="tab" active-class="active">
+          聯絡資料
+        </router-link>
+
       </div>
 
       <!-- 發文框 -->
@@ -48,23 +78,9 @@
         <input
           v-model="draft"
           class="composer-input"
-          placeholder="有什麼新鮮事？"
+          placeholder="更新我的開發紀錄"
         />
         <button class="publish-btn">發佈</button>
-      </div>
-
-      <!-- 下方內容 -->
-      <div class="profile-section">
-        <div class="section-head">
-          <h2>完成個人檔案</h2>
-          <span>剩2項</span>
-        </div>
-
-        <div class="task-grid">
-          <div class="task-card">卡片1</div>
-          <div class="task-card">卡片2</div>
-          <div class="task-card">卡片3</div>
-        </div>
       </div>
     </div>
   </section>
@@ -73,18 +89,16 @@
 <script setup>
 import { ref } from 'vue'
 import avatar1 from '@/assets/image/avatar1.jpg'
-import avatar2 from '@/assets/image/avatar2.jpg'
-import avatar3 from '@/assets/image/avatar3.jpg'
-import { ChartBarSquareIcon,CameraIcon } from '@heroicons/vue/24/outline'
+import image1 from '@/assets/image/image1.jpg'
+import image2 from '@/assets/image/image2.png'
+import image3 from '@/assets/image/image3.png'
+import { ChartBarSquareIcon, CameraIcon } from '@heroicons/vue/24/outline'
 
 const draft = ref('')
+
 </script>
 
-
 <style lang="less" scoped>
-
-
-
 .profile-card {
   max-width: 780px;
   margin: 0 auto;
@@ -98,36 +112,92 @@ const draft = ref('')
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 40px 42px 24px;
+  padding: 40px 42px;
 }
 
 .profile-info {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
 .name {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   margin: 0;
 }
 
-.username {
-  font-size: 18px;
-  margin: 0;
+.role {
+  font-size: 16px;
+  margin: 8px 0 0;
   color: #222;
+  font-weight: 600;
 }
 
-.followers {
+.bio {
+  font-size: 16px;
+  margin: 8px 0 0;
+  color: #222;
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+.links-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 15px;
+}
+
+.profile-link {
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+  opacity: 0.75;
+}
+
+.dot {
+  color: #999;
+}
+
+.meta-row {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-top: 18px;
   color: #8d8d8d;
   font-size: 16px;
+  flex-wrap: wrap;
 }
 
+.stats {
+  color: #8d8d8d;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  max-width: 520px;
+}
+
+.skill-tag {
+  padding: 6px 10px;
+  border-radius: 16px;
+  background: #f3f3f3;
+  color: #666;
+  font-size: 13px;
+  line-height: 1;
+}
 .follower-avatars {
   display: flex;
 }
@@ -149,12 +219,13 @@ const draft = ref('')
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
+  margin-left: 24px;
 }
 
 .main-avatar {
-  width: 130px;
-  height: 130px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -171,15 +242,16 @@ const draft = ref('')
   background: transparent;
   cursor: pointer;
   font-size: 24px;
-  
 }
-.icon{
-  width:24px;
-  height:24px;
+
+.icon {
+  width: 24px;
+  height: 24px;
 }
+
 .edit-btn {
   width: calc(100% - 84px);
-  margin: 0 42px 24px;
+  margin: 0 42px 0px;
   height: 40px;
   border-radius: 18px;
   border: 1px solid #ddd;
@@ -197,17 +269,22 @@ const draft = ref('')
 
 .tab {
   height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background: #fff;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
   color: #999;
   cursor: pointer;
+  text-decoration: none;
+  
 }
 
-.tab.active {
-  color: #111;
-  border-bottom: 2px solid #111;
+.tab:hover {
+  color: #444;
+  border-bottom: 1px solid #111;
 }
 
 .composer {
@@ -241,42 +318,5 @@ const draft = ref('')
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-}
-
-.profile-section {
-  padding: 28px 42px 36px;
-}
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.section-head h2 {
-  margin: 0;
-  font-size: 20px;
-}
-
-.section-head span {
-  color: #666;
-  font-size: 16px;
-}
-
-.task-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.task-card {
-  height: 180px;
-  border-radius: 24px;
-  background: #f6f6f6;
-  display: grid;
-  place-items: center;
-  color: #999;
-  font-size: 18px;
 }
 </style>

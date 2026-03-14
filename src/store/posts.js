@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
 import avatar2 from '@/assets/image/avatar2.jpg'
-import avatar1 from '@/assets/image/avatar1.jpg' 
-import avatar3 from '@/assets/image/avatar3.jpg' 
+import avatar1 from '@/assets/image/avatar1.jpg'
+import avatar3 from '@/assets/image/avatar3.jpg'
 
-const STORAGE_KEY = 'threads_posts_v2'
+const STORAGE_KEY = 'threads_posts_v3'
 
 export const usePostsStore = defineStore('posts', {
   state: () => ({
@@ -11,17 +11,17 @@ export const usePostsStore = defineStore('posts', {
   }),
 
   actions: {
-    addPost(text) {
+    addPost(text, currentTab) {
       const content = (text ?? '').trim()
       if (!content) return
 
       this.posts.unshift({
         id: newId(),
-        author: '你自己',
-        avatar:avatar1,
+        author: '陳姸如',
+        avatar: avatar1,
         createdAt: Date.now(),
         text: content,
-        tab: 'following', // ✅ 你發文預設屬於追蹤中
+        tab: currentTab || 'devlog',
         likes: 0,
         likedByMe: false,
         replies: [],
@@ -55,7 +55,7 @@ export const usePostsStore = defineStore('posts', {
 
       post.replies.unshift({
         id: newId(),
-        author: '你自己',
+        author: '陳姸如',
         avatar: avatar1,
         createdAt: Date.now(),
         text: content,
@@ -71,7 +71,7 @@ function loadPosts() {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (raw) {
       const data = JSON.parse(raw)
-      return Array.isArray(data) ? data : []
+      return Array.isArray(data) ? data : getDefaultPosts()
     }
     return getDefaultPosts()
   } catch {
@@ -91,28 +91,81 @@ function newId() {
 
 function getDefaultPosts() {
   const now = Date.now()
+
   return [
     {
-      id: 'demo-following-1',
-      author: 'bosmin23456',
-      createdAt: now - 1000 * 60 * 15,
-      text: '最後一次在值班人員欄蓋章。洗腎室冷知識除了診所以及小型醫院的洗腎室每週日沒上班大型或中大型醫院的洗腎室在大半夜及週日都會有值班人員在家/醫院待命。這個人專門處理緊急透析、24小時連續洗腎機、血漿置換，還有一堆奇奇怪怪的洗腎疑難雜症。通常，都是一個護理師搭一位腎臟科值班醫師。所以如果在洗腎室洗到CPR，也是一個人邊打電話邊CPR☺️（有的醫院是ICU要自己裝CVVH那除外）',
-      tab: 'following',
-      likes: 2,
+      id: 'about-1',
+      author: '📌 About Me',
+      createdAt: now - 1000 * 60 * 30,
+      text: 'Hi，我是陳姸如，目前專注於前端開發，正在持續學習 Vue、JavaScript 與前端工程化。',
+      tab: 'about',
+      likes: 3,
       likedByMe: false,
       replies: [],
       avatar: avatar2,
     },
     {
-      id: 'demo-foryou-1',
-      author: '推薦精選',
-      createdAt: now - 1000 * 60 * 8,
-      text: 'Vue 3 + Pinia 狀態管理真的順 ✨',
-      tab: 'forYou',
-      likes: 10,
+      id: 'about-2',
+      author: '🧠 Skills',
+      createdAt: now - 1000 * 60 * 20,
+      text: 'Vue 3 / JavaScript / HTML / CSS / Pinia / Vue Router / Git / Vite',
+      tab: 'about',
+      likes: 5,
       likedByMe: false,
       replies: [],
-      avatar:avatar3,
+      avatar: avatar3,
+    },
+    {
+      id: 'about-3',
+      author: '🌱 Learning Journey',
+      createdAt: now - 1000 * 60 * 10,
+      text: '從 HTML / CSS、JavaScript 開始，接著學習 Vue、Pinia、Vue Router，目前也持續補強 webpack 與 ES6 模組化觀念。',
+      tab: 'about',
+      likes: 4,
+      likedByMe: false,
+      replies: [],
+      avatar: avatar1,
+    },
+    {
+      id: 'project-1',
+      author: '🚀 Threads Resume Website',
+      createdAt: now - 1000 * 60 * 40,
+      text: '使用 Vue 3 製作的 Threads 風格履歷網站，保留發文、回覆、按讚與個人頁功能，並把自我介紹、專案與開發紀錄做成貼文流。',
+      tab: 'projects',
+      likes: 8,
+      likedByMe: false,
+      replies: [
+        {
+          id: 'project-1-reply-1',
+          author: '陳姸如',
+          avatar: avatar1,
+          createdAt: now - 1000 * 60 * 35,
+          text: '技術：Vue 3 / Pinia / Vue Router / localStorage',
+        },
+      ],
+      avatar: avatar2,
+    },
+    {
+      id: 'project-2',
+      author: '🎮 Snake Game',
+      createdAt: now - 1000 * 60 * 25,
+      text: '使用 JavaScript 製作的貪食蛇遊戲，包含遊戲邏輯與排行榜功能。',
+      tab: 'projects',
+      likes: 6,
+      likedByMe: false,
+      replies: [],
+      avatar: avatar3,
+    },
+    {
+      id: 'devlog-1',
+      author: '🛠 Dev Log',
+      createdAt: now - 1000 * 60 * 5,
+      text: '今天把首頁 tabs 改成 About / Projects / Dev Log。',
+      tab: 'devlog',
+      likes: 2,
+      likedByMe: false,
+      replies: [],
+      avatar: avatar1,
     },
   ]
 }
