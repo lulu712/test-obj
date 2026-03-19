@@ -1,7 +1,7 @@
 <template>
-  <TimelinePage tab="projects" />
+  <ProjectsSection />
 </template>
 
 <script setup>
-import TimelinePage from '@/components/Post/TimelinePage.vue'
+import ProjectsSection from '@/components/Post/ProjectsSection.vue'
 </script>

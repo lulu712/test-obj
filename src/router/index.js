@@ -4,7 +4,6 @@ import Home from '../views/Home/Home.vue'
 import Login from '../views/auth/Login.vue'
 import Register from '../views/auth/Register.vue'
 import Activity from '../views/Activity/Activity.vue'
-import Search from '../views/Search/Search.vue'
 import Profile from '../views/Profile/Profile.vue'
 import DevLog from '../views/DevLog/DevLog.vue'
 import Projects from '../views/Projects/Projects.vue'
@@ -22,7 +21,6 @@ const routes = [
             { path: '', name: 'Profile', component: Profile, meta: { header: 'title', title: '個人檔案' } },
             { path: 'home', name: 'Home', component: Home, meta: { header: 'tabs' } },
             { path: 'activity', name: 'Activity', component: Activity, meta: { header: 'title', title: '動態' } },
-            { path: 'search', name: 'Search', component: Search, meta: { header: 'title', title: '搜尋' } },
             { path: 'devLog', name: 'DevLog', component: DevLog, meta: { header: 'tabs', title: '開發紀錄' } },
             { path: 'projects', name: 'Projects', component: Projects, meta: { header: 'tabs', title: '作品集' } }
 

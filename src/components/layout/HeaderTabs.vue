@@ -2,7 +2,7 @@
   <header class="threads-header">
     <div class="header-inner">
       <div class="tabs" aria-label="Feed tabs">
-        <router-link to="/" class="tab" exact-active-class="active">About</router-link>
+        <router-link to="/home" class="tab" exact-active-class="active">About</router-link>
         <router-link to="/projects" class="tab" exact-active-class="active">Projects </router-link>
         <router-link to="/devLog" class="tab" exact-active-class="active">Dev Log</router-link>
       </div>

@@ -24,11 +24,6 @@
         <HomeIcon class="icon" />
       </router-link>
 
-      <!-- 搜索 -->
-      <router-link to="/search" class="nav-btn"  aria-label="Search">
-        <MagnifyingGlassIcon class="icon" />
-      </router-link>
-
       <!-- 添加 -->
       <button class="nav-btn create" type="button" aria-label="Create">
         <PlusIcon class="icon" />
@@ -58,7 +53,7 @@
 </template>
 
 <script setup>
-import { HomeIcon,MagnifyingGlassIcon,PlusIcon, HeartIcon, UserIcon,Bars2Icon } from '@heroicons/vue/24/outline'
+import { HomeIcon,PlusIcon, HeartIcon, UserIcon,Bars2Icon } from '@heroicons/vue/24/outline'
 import logo from '@/assets/image/Threads.png'
 
 

@@ -37,7 +37,9 @@
             <span class="skill-tag">Git</span>
             <span class="skill-tag">Vite</span>
           </div>
+          <span>Threads Resume Website <br>Vue3 + Pinia + Router</span>
         </div>
+
 
         <div class="profile-side">
           <img class="main-avatar" :src="avatar1" alt="avatar" />
@@ -149,12 +151,12 @@ const draft = ref('')
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 14px;
+  margin-top: 20px;
   font-size: 15px;
 }
 
 .profile-link {
-  color: #111;
+  color: #615252;
   text-decoration: none;
   font-weight: 600;
 }
@@ -172,7 +174,7 @@ const draft = ref('')
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 24px;
   color: #8d8d8d;
   font-size: 16px;
   flex-wrap: wrap;
@@ -185,9 +187,9 @@ const draft = ref('')
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-  max-width: 520px;
+  gap: 12px;
+  margin-top: 14px;
+  max-width: 420px;
 }
 
 .skill-tag {
