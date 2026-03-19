@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MainLayout from '../MainLayout.vue'
 import Home from '../views/Home/Home.vue'
-
 import Activity from '../views/Activity/Activity.vue'
 import Profile from '../views/Profile/Profile.vue'
 import DevLog from '../views/DevLog/DevLog.vue'
