@@ -1,17 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MainLayout from '../MainLayout.vue'
 import Home from '../views/Home/Home.vue'
-import Login from '../views/auth/Login.vue'
-import Register from '../views/auth/Register.vue'
+
 import Activity from '../views/Activity/Activity.vue'
 import Profile from '../views/Profile/Profile.vue'
 import DevLog from '../views/DevLog/DevLog.vue'
 import Projects from '../views/Projects/Projects.vue'
 
 const routes = [
-    //不套用layout 登入註冊
-    { path: '/login', name: 'Login', component: Login },
-    { path: '/register', name: 'Register', component: Register },
 
     // ✅ 套 Layout：登入後主區（側邊欄固定）
     {
