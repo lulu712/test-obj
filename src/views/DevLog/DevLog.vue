@@ -5,13 +5,13 @@
       <p>記錄開發過程、功能調整與學習重點。</p>
     </header>
 
-    <div class="devlog-list">
-      <DevLogItem
-        v-for="post in devLogPosts"
-        :key="post.id"
-        :post="post"
-      />
-    </div>
+  <div class="devlog-list">
+    <DevLogItem
+      v-for="post in devLogPosts"
+      :key="post.id"
+      :post="post"
+    />
+  </div>
   </section>
 </template>
 
@@ -55,4 +55,6 @@ const { devLogPosts } = storeToRefs(postsStore)
   display: grid;
   gap: 18px;
 }
+
+
 </style>
