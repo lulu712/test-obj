@@ -1,5 +1,5 @@
 {
-  "name": "test-obj",
+  "name": "lulu-profile",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,6 +13,7 @@
     "@heroicons/vue": "^2.2.0",
     "element-plus": "^2.13.2",
     "less": "^4.5.1",
+    "lucide-vue-next": "^0.577.0",
     "pinia": "^3.0.4",
     "vant": "^4.9.22",
     "vue": "^3.5.25",

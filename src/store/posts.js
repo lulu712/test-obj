@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
-import avatar2 from '@/assets/image/avatar2.jpg'
 import avatar1 from '@/assets/image/avatar1.jpg'
-import avatar3 from '@/assets/image/avatar3.jpg'
+
 
 const STORAGE_KEY = 'threads_posts_v4'
 
@@ -124,25 +123,36 @@ function getDefaultPosts() {
   const now = Date.now()
 
   return [
+     {
+      id: 'about-1',
+      author: '🛠 About',
+      createdAt: now - 1000 * 60 * 60,
+      text: `📌我是陳妍如 從護理師到前端工程師的斜槓人生`,
+      tab: 'about',
+      likes: 2,
+      likedByMe: false,
+      replies: [],
+      avatar: avatar1,
+    },
     {
       id: 'devlog-1',
       author: '🛠 Dev Log',
       createdAt: now - 1000 * 60 * 60,
-      text: `📌 Dev Log — Tabs 改版
+     text: `v0.3 — Tabs 改版
 
-            🛠 做了什麼
-            將首頁 Tabs 從原本結構改為：
-            About / Projects / Dev Log
+**做了什麼**
+將首頁分頁重新整理成三個核心區塊：
+About / Projects / Dev Log
 
-            🔧 使用技術
-            Vue 3 / ref / 狀態切換
+**使用技術**
+Vue 3 / ref / 狀態切換
 
-            ✨ 功能
-            - 分頁切換
-            - UI 結構更清楚
+**完成功能**
+- 分頁切換
+- UI 結構更清楚
 
-            🧠 學到什麼
-            分類清楚比功能多更重要`,
+**學到的事**
+分類清楚比功能多更重要`,
       tab: 'devlog',
       likes: 2,
       likedByMe: false,

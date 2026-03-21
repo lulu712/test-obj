@@ -16,20 +16,26 @@
 
     <div class="nav-list">
 
-      <router-link to="/" class="nav-btn" aria-label="Profile">
-         <UserIcon class="icon" />
+      <router-link to="/" class="nav-btn" aria-label="Profile" data-label="Profile">
+         <UserRoundPen class="icon" />
       </router-link>
 
-      <router-link to="/home" class="nav-btn" aria-label="Home">
-        <HomeIcon class="icon" />
+      <router-link to="/home" class="nav-btn" aria-label="Home" data-label="Home">
+        <House class="icon" />
       </router-link>
 
       <!-- 添加 -->
-      <button class="nav-btn create" type="button" aria-label="Create">
-        <PlusIcon class="icon" />
-      </button>
-
-      <router-link to="/activity" class="nav-btn" aria-label="Activity">
+      <a
+        href="https://snake-game-five-indol-18.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-btn create"
+        data-label="Game"
+      >
+        <Gamepad2 class="icon" />
+      </a>
+      
+      <router-link to="/activity" class="nav-btn" aria-label="Activity" data-label="Like" >
         <HeartIcon class="icon" />
       </router-link>
 
@@ -53,8 +59,9 @@
 </template>
 
 <script setup>
-import { HomeIcon,PlusIcon, HeartIcon, UserIcon,Bars2Icon } from '@heroicons/vue/24/outline'
+import { HeartIcon,Bars2Icon } from '@heroicons/vue/24/outline'
 import logo from '@/assets/image/Threads.png'
+import { Gamepad2,House,UserRoundPen } from 'lucide-vue-next'
 
 
 
@@ -97,21 +104,79 @@ import logo from '@/assets/image/Threads.png'
 }
 
 /* 一般按鈕 */
-.nav-btn{
+.nav-btn {
+  position: relative;
   width: 60px;
   height: 50px;
   border-radius: 14px;
-  display:grid;
-  place-items:center;
+  display: grid;
+  place-items: center;
   background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
-  text-decoration:none;
+  text-decoration: none;
+  transition: background 0.2s ease;
 }
 
-.nav-btn:hover{
-  background:#f2f2f2;
+/* hover 背景 */
+.nav-btn:hover {
+  background: #e9e9e9;
+}
+
+/* icon hover 變深 */
+.nav-btn:hover .icon {
+  color: #111;
+}
+
+/* tooltip */
+.nav-btn::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 72px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: #111;
+  color: #fff;
+  font-size:14px;
+  line-height: 1;
+  padding: 7px 10px;
+  border-radius: 8px;
+
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+  z-index: 10;
+}
+
+/* 小箭頭 */
+.nav-btn::before {
+  content: "";
+  position: absolute;
+  left: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: #111;
+
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+/* hover 出現 */
+.nav-btn:hover::after,
+.nav-btn:focus-visible::after {
+  opacity: 1;
+  left: 80px;   /* 往右滑出 */
+}
+
+.nav-btn:hover::before {
+  opacity: 1;
+  left: 72px;
 }
 
 /* icon 尺寸 */
