@@ -56,7 +56,9 @@
 
 <script setup>
 import avatar1 from '@/assets/image/avatar1.jpg'
-import avatar2 from '@/assets/image/avatar2.jpg'
+import image2_project from '@/assets/image/image2_project.jpg'
+import image3_project from '@/assets/image/image3_project.jpg'
+import image4_project from '@/assets/image/image4_project.jpg'
 
 const projects = [
   {
@@ -78,6 +80,38 @@ const projects = [
   {
     id: 2,
     label: 'Project',
+    title: 'Accompaniment Service H5',
+    stack: 'Vue 3 · Vite · Vue Router · Vant UI · Axios',
+    description:'以 Vue 3 + Vite 開發的陪診服務行動端應用，提供預約、下單、訂單管理等完整功能。',
+    features: [
+      '登入 / 註冊：用戶身份驗證',
+      '建立訂單：填寫陪診需求並下單',
+      '訂單管理：查看訂單列表與狀態',
+      '訂單詳情：查看完整訂單資訊與 QR Code',
+    ],
+    image: image2_project,
+    demo: '#',
+    github: '#',
+  },
+  {
+    id: 3,
+    label: 'Project',
+    title: 'Admin Dashboard',
+    stack: 'Vue 3 · Vite · Element Plus · Pinia · Vue Router · Axios · ECharts',
+    description:'以 Vue 3 開發陪診管理平台，提供患者、陪診員與管理者操作介面。',
+    features: [
+      '建立資訊看板（ECharts）',
+      '實作登入驗證與權限控管',
+      '建立陪診紀錄管理（CRUD）',
+      '實現登入狀態持久化',
+    ],
+    image:image3_project,
+    demo: '#',
+    github: '#',
+  },
+  {
+    id: 4,
+    label: 'Project',
     title: 'Snake Game',
     stack: 'JavaScript · HTML · CSS',
     description:'使用原生 JavaScript 製作貪食蛇遊戲，包含遊戲邏輯、分數計算與排行榜功能。',
@@ -87,7 +121,7 @@ const projects = [
       '排行榜功能',
       'DOM 操作練習',
     ],
-    image: avatar2 ,
+    image: image4_project ,
     demo: '#',
     github: '#',
   },

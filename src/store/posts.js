@@ -138,7 +138,7 @@ function getDefaultPosts() {
       id: 'devlog-1',
       author: '🛠 Dev Log',
       createdAt: now - 1000 * 60 * 60,
-     text: `v0.3 — Tabs 改版
+      text: `v0.3 — Tabs 改版
 
 **做了什麼**
 將首頁分頁重新整理成三個核心區塊：
