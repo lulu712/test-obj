@@ -1,67 +1,61 @@
 <template>
   <nav class="threads-nav">
-    <!-- Logo -->
     <router-link to="/" class="logo" aria-label="Threads">
       <img 
         :src="logo" 
         class="logo-mark"
         alt="threads首頁"
-        width="40px"
-        height="40px"
-        />
-
+        width="40"
+        height="40"
+      />
     </router-link>
 
-    <!-- Middle icons -->
-
     <div class="nav-list">
-
-      <router-link to="/" class="nav-btn" aria-label="Profile" data-label="Profile">
-         <UserRoundPen class="icon" />
+      <router-link to="/" class="nav-btn" data-label="Profile">
+        <UserRoundPenIcon class="icon" />
       </router-link>
 
-      <router-link to="/home" class="nav-btn" aria-label="Home" data-label="Home">
-        <House class="icon" />
+      <router-link to="/home" class="nav-btn" data-label="Home">
+        <HouseIcon class="icon" />
       </router-link>
-
-      <!-- 添加 -->
-      <a
-        href="https://snake-game-five-indol-18.vercel.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="nav-btn create"
-        data-label="Game"
-      >
-        <Gamepad2 class="icon" />
-      </a>
-      
-      <router-link to="/activity" class="nav-btn" aria-label="Activity" data-label="Like" >
-        <HeartIcon class="icon" />
-      </router-link>
-
     </div>
 
-    <!-- Bottom menu -->
-      <el-dropdown placement="top-end">
-      <button class="nav-btn menu"  native-type="button" aria-label="Menu">
-       <Bars2Icon class="icon"/>
-      </button>
-      <template #dropdown>
-        <el-dropdown-menu>
-          <el-dropdown-item>外觀</el-dropdown-item>
-          <el-dropdown-item>設定</el-dropdown-item>
-          <el-dropdown-item>動態設定</el-dropdown-item>
-        </el-dropdown-menu>
-      </template>
-    </el-dropdown>
+    <div class="nav-bottom">
+      <a
+        href="https://github.com/你的帳號"
+        target="_blank"
+        class="nav-btn utility"
+        data-label="GitHub"
+      >
+        <GithubIcon class="icon" />
+      </a>
+      <a
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-btn utility"
+        data-label="Resume"
+      >
+        <FileTextIcon class="icon" />
+      </a>
 
+      <a
+        href="mailto:benz9779@gmail.com"
+        class="nav-btn utility"
+        data-label="Contact"
+      >
+        <MailIcon class="icon" />
+      </a>
+
+    </div>
   </nav>
 </template>
 
+
 <script setup>
-import { HeartIcon,Bars2Icon } from '@heroicons/vue/24/outline'
+import { FileTextIcon,MailIcon,HouseIcon,UserRoundPenIcon,GithubIcon } from 'lucide-vue-next'
 import logo from '@/assets/image/Threads.png'
-import { Gamepad2,House,UserRoundPen } from 'lucide-vue-next'
+
 
 
 
@@ -70,7 +64,7 @@ import { Gamepad2,House,UserRoundPen } from 'lucide-vue-next'
 
 <style lang="less" scoped>
 .threads-nav{
-  height: 100%;
+  height: 100vh;
   width: 72px;
   flex-shrink: 0;
   display:flex;
@@ -86,21 +80,30 @@ import { Gamepad2,House,UserRoundPen } from 'lucide-vue-next'
   height: 44px;
   display:grid;
   place-items:center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .logo-mark{
   display:block;
 }
 
-/* 中間 icon 區 */
+/* 中間主導航 */
 .nav-list{
   flex: 1;
   display:flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 0px;     
+  gap: 2px;
+  margin-top: 8px;
+}
+
+/* 底部工具 */
+.nav-bottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 18px;
 }
 
 /* 一般按鈕 */
@@ -136,18 +139,15 @@ import { Gamepad2,House,UserRoundPen } from 'lucide-vue-next'
   left: 72px;
   top: 50%;
   transform: translateY(-50%);
-
   background: #111;
   color: #fff;
   font-size:14px;
   line-height: 1;
   padding: 7px 10px;
   border-radius: 8px;
-
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-
   transition: 0.2s ease;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
   z-index: 10;
@@ -162,7 +162,6 @@ import { Gamepad2,House,UserRoundPen } from 'lucide-vue-next'
   transform: translateY(-50%);
   border: 6px solid transparent;
   border-right-color: #111;
-
   opacity: 0;
   transition: 0.2s ease;
 }
@@ -171,10 +170,11 @@ import { Gamepad2,House,UserRoundPen } from 'lucide-vue-next'
 .nav-btn:hover::after,
 .nav-btn:focus-visible::after {
   opacity: 1;
-  left: 80px;   /* 往右滑出 */
+  left: 80px;
 }
 
-.nav-btn:hover::before {
+.nav-btn:hover::before,
+.nav-btn:focus-visible::before {
   opacity: 1;
   left: 72px;
 }
@@ -183,33 +183,21 @@ import { Gamepad2,House,UserRoundPen } from 'lucide-vue-next'
 .icon{
   width: 26px;
   height: 26px;
-  color:#b5b5b5;
+  color: #9aa0aa;
   transition: color 0.15s ease;
 }
 
-/* + 按鈕（官方略大） */
-.create{
-  width: 60px;      
-  height: 50px;
-  border-radius: 15px;
-  background:#f1f1f1;
+/* 底部工具比較輕 */
+.nav-btn.github {
+  opacity: 0.85;
+}
+.nav-btn.utility {
+  opacity: 0.6;
 }
 
-.create:hover{
-  background:#e9e9e9;
+.nav-btn.utility:hover {
+  opacity: 1;
 }
 
-.create .icon{
-  width: 26px;
-  height: 26px;
-  color:#9e9e9e;
-  transform: translateY(1px); /* 視覺中心微調 */
-}
-
-/* 底部 menu */
-.menu{
-  margin-top:20px;
-  margin-bottom: 22px;
-}
 
 </style>
